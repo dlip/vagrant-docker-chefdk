@@ -3,3 +3,9 @@ execute "install chefdk" do
   user "root"
   not_if { ::File.exists?("chefdk_0.0.1-1_amd64.deb") }
 end
+
+execute "add chefdk to path" do
+  command "echo 'export PATH=\"/opt/chefdk/embedded/bin\"\:$PATH' > /home/vagrant/.bash_profile"
+  user "vagrant"
+  not_if { ::File.exists?("/home/vagrant/.bash_profile") }
+end

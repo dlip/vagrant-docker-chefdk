@@ -9,3 +9,8 @@ execute "add chefdk to path" do
   user "vagrant"
   not_if { ::File.exists?("/home/vagrant/.bash_profile") }
 end
+
+execute "install kitchen-docker" do
+  command "/opt/chefdk/embedded/bin/gem install kitchen-docker"
+  user "root"
+end
